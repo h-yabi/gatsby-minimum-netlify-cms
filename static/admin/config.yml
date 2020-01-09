@@ -1,5 +1,6 @@
 backend:
   name: git-gateway
+  repo: HiroyaYabiku/gatsby-minimum-netlify-cms
 
 media_folder: static/assets
 public_folder: assets
