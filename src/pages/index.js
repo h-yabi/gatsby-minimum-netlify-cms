@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 export default ({ data }) => {
   return (
     <div>
@@ -7,7 +7,7 @@ export default ({ data }) => {
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <div key={node.id}>
           <div>              
-            <span>{node.frontmatter.date}</span> : {node.frontmatter.title}
+            <span>{node.frontmatter.date}</span> : <Link to={node.frontmatter.path}>{node.frontmatter.title}</Link>
           </div>
         </div>
       ))}
@@ -16,13 +16,14 @@ export default ({ data }) => {
 }
 export const query = graphql`
   query {
-    allMarkdownRemark {
+    allMarkdownRemark(limit: 5) {
       edges {
         node {
           id
           frontmatter {
             title
             date(formatString: "YYYY年MM月DD日")
+            path
           }
         }
       }
