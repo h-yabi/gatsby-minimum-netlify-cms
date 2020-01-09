@@ -2,16 +2,14 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 
 export default ({ data }) => {
+
   return (
     <div>
       <h1>NEWS</h1>
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <div key={node.id}>
-          <div>              
-            <span>{node.frontmatter.date}</span> : <Link to={node.frontmatter.path}>{node.frontmatter.title}</Link>
-          </div>
           <div>
-             {node.excerpt}
+            <span>{node.frontmatter.date}</span><span dangerouslySetInnerHTML={{ __html: node.html }} />
           </div>
         </div>
       ))}
@@ -24,6 +22,7 @@ export const query = graphql`
       edges {
         node {
           id
+          html
           frontmatter {
             title
             date(formatString: "YYYY年MM月DD日")

@@ -11,7 +11,7 @@ collections:
     folder: src/pages/blog
     create: true
     fields:
-      - { name: path, label: URL }
+      - { name: path, label: ページURL }
       - { name: date, label: 投稿日, widget: datetime }
-      - { name: title, label: タイトル }
+      - { name: title, label: 記事タイトル }
       - { name: body, label: 本文, widget: markdown }
