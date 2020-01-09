@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
+
 export default ({ data }) => {
   return (
     <div>
@@ -8,6 +9,9 @@ export default ({ data }) => {
         <div key={node.id}>
           <div>              
             <span>{node.frontmatter.date}</span> : <Link to={node.frontmatter.path}>{node.frontmatter.title}</Link>
+          </div>
+          <div>
+             {node.excerpt}
           </div>
         </div>
       ))}
